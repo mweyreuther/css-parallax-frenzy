@@ -69,8 +69,8 @@ export default {
     centerSpace() {
       const _app = this.$refs.app;
       if (!_app) return;
-      _app.scrollTop = this.spaceHeight / 4;
-      _app.scrollLeft = this.spaceWidth / 4;
+      _app.scrollTop = _app.clientHeight / 2;
+      _app.scrollLeft = _app.clientWidth / 2;
     },
     transfromX(i) {
       return this.isRandom ? random(0, this.boundsX) : this.boundsX / 2;
