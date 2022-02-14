@@ -23,6 +23,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
+import { random } from 'lodash';
 
 export default {
   name: 'App',
@@ -36,6 +37,7 @@ export default {
       boxWidth: 440,
       boxHeight: 440,
       length: { length: 10 },
+      isRandom: true,
     };
   },
   computed: {
@@ -71,20 +73,20 @@ export default {
       _app.scrollLeft = this.spaceWidth / 4;
     },
     transfromX(i) {
-      return this.boundsX / 2;
+      return this.isRandom ? random(0, this.boundsX) : this.boundsX / 2;
     },
     transfromY(i) {
-      return this.boundsY / 2;
+      return this.isRandom ? random(0, this.boundsY) : this.boundsY / 2;
     },
     transfromZ(i) {
-      const depth = -i * 10;
-      return depth;
+      return this.isRandom ? -i * random(0, 10) : -i * 10;
     },
     inlineStyle(i) {
       const x = this.transfromX(i);
       const y = this.transfromY(i);
       const z = this.transfromZ(i);
-      const transform = `translate3d(${x}px, ${y}px, ${z}px)`;
+      const scale = this.isRandom ? random(0.5, 1.8) : 1;
+      const transform = `translate3d(${x}px, ${y}px, ${z}px) scale(${scale})`;
       return { transform };
     },
   },
