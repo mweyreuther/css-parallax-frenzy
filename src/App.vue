@@ -1,5 +1,10 @@
 <template>
-  <div id="app" ref="app" class="bg-gray-600 relative p-4">
+  <div
+    id="app"
+    ref="app"
+    class="relative bg-gray-600 relative p-4"
+    @click="isRandom = !isRandom"
+  >
     <section ref="space" class="__space bg-gray-200/20">
       <div
         class="
